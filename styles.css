@@ -1,0 +1,43 @@
+body {
+  font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  margin: 2rem;
+  color: #222;
+  background: #fdfdfd;
+  overflow-x: auto;
+  white-space: nowrap;
+}
+
+header {
+  margin-bottom: 1.5rem;
+  max-width: 600px;
+}
+
+#strip {
+  display: flex;
+  align-items: center;
+  height: 60px;
+}
+
+.bar {
+  display: inline-block;
+  height: 100%;
+  margin-right: 10px;
+  border-radius: 4px;
+  transition: opacity 0.3s ease;
+}
+
+.bar:hover {
+  opacity: 0.8;
+}
+
+.label {
+  display: block;
+  text-align: center;
+  margin-top: 0.5rem;
+  font-size: 0.9rem;
+}
+
+#usa-share {
+  margin-top: 2rem;
+  font-weight: 500;
+}
