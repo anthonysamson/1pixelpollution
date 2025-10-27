@@ -1,33 +1,38 @@
 body {
   font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
-  margin: 2rem;
-  color: #222;
-  background: #fdfdfd;
-  overflow-x: auto;
-  white-space: nowrap;
+  margin: 0;
+  color: #111;
+  background: #fafafa;
+  overflow-x: hidden;
 }
 
 header {
-  margin-bottom: 1.5rem;
+  padding: 2rem;
   max-width: 600px;
+}
+
+#scroll-container {
+  overflow-x: auto;
+  white-space: nowrap;
+  border-top: 1px solid #ddd;
+  border-bottom: 1px solid #ddd;
+  background: white;
+  padding: 1rem 0;
+  cursor: ew-resize;
 }
 
 #strip {
   display: flex;
   align-items: center;
-  height: 60px;
+  height: 80px;
+  width: max-content; /* expands as wide as needed */
 }
 
 .bar {
-  display: inline-block;
   height: 100%;
   margin-right: 10px;
   border-radius: 4px;
-  transition: opacity 0.3s ease;
-}
-
-.bar:hover {
-  opacity: 0.8;
+  flex-shrink: 0; /* prevent scaling */
 }
 
 .label {
@@ -35,9 +40,10 @@ header {
   text-align: center;
   margin-top: 0.5rem;
   font-size: 0.9rem;
+  white-space: normal;
 }
 
 #usa-share {
-  margin-top: 2rem;
+  padding: 2rem;
   font-weight: 500;
 }
