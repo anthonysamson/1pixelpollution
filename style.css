@@ -1,0 +1,49 @@
+body {
+  margin: 0;
+  background: #ffffff;
+  color: #000000;
+  font-family: system-ui, sans-serif;
+  overflow-x: auto;
+  overflow-y: hidden;
+  white-space: nowrap;
+  scroll-behavior: smooth;
+}
+
+.section {
+  display: inline-block;
+  height: 105vh;
+  vertical-align: top;
+  padding: 60px;
+  box-sizing: border-box;
+  text-align: center;
+}
+
+#usa {
+  width: 200vw;
+  text-align: left;
+  padding-left: 60px;
+}
+
+#usa .block {
+  display: inline-block;
+  background: #111;
+  border-radius: 0;
+  margin-top: 40px;
+}
+
+h1, h2 {
+  margin: 0.5em 0;
+}
+
+
+.pixel, .block {
+  background-color: #222; 
+  border-radius: 0;          
+  box-shadow: none;         
+  display: inline-block;
+}
+
+.block {
+  outline: 1px solid #222;   
+  image-rendering: pixelated;
+}

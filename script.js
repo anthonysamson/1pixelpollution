@@ -1,55 +1,46 @@
-// 1 pixel = 1 average person's annual CO2 emissions (≈5 tonnes)
-const TONNES_PER_PIXEL = 5;
-const AVERAGE_PERSON_CO2 = 5; // tonnes per year
-const TARGET_YEAR = 2022;
+async function loadData() {
+  let data;
 
-d3.csv("co2_data.csv").then(data => {
-  const countries = ["China", "United States", "Russia"];
-  const filtered = data.filter(d => +d.year === TARGET_YEAR && countries.includes(d.country));
-
-  const visData = [
-    { label: "Average Person", co2_tonnes: AVERAGE_PERSON_CO2 },
-    ...filtered.map(d => ({
-      label: d.country,
-      co2_tonnes: +d.co2 * 1e6, // million tonnes → tonnes
-      share: +d.share_global_cumulative_co2
-    }))
-  ];
-
-  // Compute bar widths (1px per 5 tonnes)
-  visData.forEach(d => {
-    d.width = d.co2_tonnes / TONNES_PER_PIXEL;
-  });
-
-  const strip = d3.select("#strip");
-  const colors = {
-    "Average Person": "#66bb6a",
-    "China": "#ef5350",
-    "United States": "#42a5f5",
-    "Russia": "#ab47bc"
-  };
-
-  visData.forEach(d => {
-    const container = strip.append("div").style("text-align", "center");
-
-    container.append("div")
-      .attr("class", "bar")
-      .style("background", colors[d.label])
-      .style("width", `${d.width}px`)
-      .attr(
-        "title",
-        `${d.label}: ${Math.round(d.co2_tonnes).toLocaleString()} tonnes CO₂ ≈ ${Math.round(d.co2_tonnes / AVERAGE_PERSON_CO2).toLocaleString()} people`
-      );
-
-    container.append("span")
-      .attr("class", "label")
-      .text(d.label);
-  });
-
-  const usa = filtered.find(d => d.country === "United States");
-  if (usa) {
-    d3.select("#usa-share").text(
-      `The United States accounts for ${usa.share_global_cumulative_co2}% of all historical CO₂ emissions.`
-    );
+  try {
+    data = await d3.csv("filtered_owid_data.csv", d3.autoType);
+    console.log("Loaded CSV rows:", data.length);
+  } catch (err) {
+    console.warn("Could not load CSV, using fallback data.", err);
+    data = [{ country: "United States", year: 2023, co2: 4911.391 }];
   }
-});
+
+  const usa2023 = data.find(d => d.country === "United States" && +d.year === 2023);
+  console.log("Found USA 2023 data:", usa2023);
+
+  const summaryEl = document.getElementById("usa-summary");
+  const blockEl = document.getElementById("usa-block");
+
+  if (!usa2023) {
+    summaryEl.textContent = "No 2023 data for the U.S. found.";
+    return;
+  }
+
+  // Compute data
+  const co2_million_tonnes = usa2023.co2;
+  const co2_tonnes = co2_million_tonnes * 1e6;
+  const pixels_needed = co2_tonnes / 5;
+
+  // ✅ Display summary
+  const summary = `In 2023, the U.S. emitted ${co2_million_tonnes.toLocaleString()} million tonnes of CO₂ — 
+  equivalent to about ${pixels_needed.toExponential(2)} pixels (1px = 5 tonnes).`;
+  summaryEl.textContent = summary;
+
+  // ✅ Make the block visible and scaled
+  const widthVW = Math.log10(pixels_needed) * 250;
+  
+  blockEl.style.width = widthVW + "vw";
+  blockEl.style.height = "400px";
+  blockEl.style.background = "linear-gradient(90deg, #000000, #505050)";
+  blockEl.style.marginTop = "40px";
+
+  // ✅ Force horizontal scroll space
+  document.body.style.width = (widthVW + 400) + "vw";
+
+  console.log("Set USA block width:", blockEl.style.width);
+}
+loadData();
