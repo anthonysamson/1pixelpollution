@@ -1,3 +1,4 @@
+/* ===== Base Styles ===== */
 body {
   margin: 0;
   background: #ffffff;
@@ -5,10 +6,11 @@ body {
   font-family: system-ui, sans-serif;
   overflow-x: auto;
   overflow-y: hidden;
-  white-space: nowrap;
+  white-space: nowrap; /* keep horizontal scroll */
   scroll-behavior: smooth;
 }
 
+/* ===== Section Layout ===== */
 .section {
   display: inline-block;
   height: 105vh;
@@ -18,10 +20,12 @@ body {
   text-align: center;
 }
 
+/* ===== USA Section ===== */
 #usa {
   width: 200vw;
   text-align: left;
   padding-left: 60px;
+  position: relative; 
 }
 
 #usa .block {
@@ -29,21 +33,133 @@ body {
   background: #111;
   border-radius: 0;
   margin-top: 40px;
+  position: relative;
 }
 
+/* ===== Headings ===== */
 h1, h2 {
   margin: 0.5em 0;
 }
 
-
+/* ===== Pixel and Block ===== */
 .pixel, .block {
-  background-color: #222; 
-  border-radius: 0;          
-  box-shadow: none;         
+  background-color: #222;
+  border-radius: 0;
+  box-shadow: none;
   display: inline-block;
 }
 
 .block {
-  outline: 1px solid #222;   
+  outline: 1px solid #222;
   image-rendering: pixelated;
+}
+
+/* ===== Overlay Text System ===== */
+#scroll-overlay {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 70%;
+  text-align: center;
+  z-index: 100;
+  pointer-events: none;
+}
+
+.scroll-text {
+  opacity: 0;
+  transition: opacity 1s ease-in-out;
+  font-size: 2rem;
+  line-height: 1.4;
+  color: white;
+  text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.5);
+}
+
+/* ===== Background for Overlay ===== */
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  background-color: solid(#000000);
+  pointer-events: none;
+  z-index: 50;
+}
+
+/* ===== USA Counter ===== */
+#usa-counter {
+  position: fixed;
+  bottom: 80px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: rgba(0, 0, 0, 0.75);
+  color: white;
+  font-size: 2rem;
+  font-weight: bold;
+  padding: 10px 24px;
+  border-radius: 12px;
+  text-shadow: 0 0 6px rgba(255, 255, 255, 0.3);
+  pointer-events: none;
+  z-index: 9999;
+  opacity: 0;
+  transition: opacity 0.8s ease;
+}
+
+/* ===== Sub-block Base Style ===== */
+.sub-block {
+  position: absolute;
+  border-radius: 8px;
+  border: 2px solid white;
+  opacity: 0;
+  transition: opacity 0.8s ease;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  font-weight: bold;
+  color: white;
+  text-shadow: 0 0 10px rgba(0,0,0,0.6);
+}
+
+/* ===== North Carolina Block ===== */
+#nc-block {
+  background: #007BFF;
+  height: 60px;       /* flatter horizontally */
+}
+
+/* ===== NC Label ===== */
+#nc-label {
+  position: absolute;
+  bottom: 100%;          /* slightly above the block */
+  left: 50%;
+  transform: translateX(-50%);
+  color: white;
+  font-weight: bold;
+  font-size: 1rem;
+  text-align: center;
+  white-space: nowrap;
+  opacity: 0;
+  transition: opacity 0.8s ease;
+  pointer-events: none;
+}
+
+/* ===== Shell Block ===== */
+#shell-block {
+  background: #ffd600;
+  height: 200px;
+}
+
+/* ===== Shell Label ===== */
+#shell-label {
+  position: absolute;  /* relative to Shell block */
+  top: -25px;          /* slightly above the block */
+  left: 0;             /* start at left edge of the block */
+  width: 100%;         /* span full block width */
+  text-align: left;    /* left-align text */
+  white-space: nowrap;
+  color: white;
+  font-weight: bold;
+  font-size: 1rem;
+  opacity: 0;
+  transition: opacity 0.8s ease;
+  pointer-events: none;
 }

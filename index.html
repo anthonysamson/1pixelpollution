@@ -6,29 +6,54 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
+  <!-- Intro Section -->
   <div class="section" id="intro">
     <h1>CO₂ Emissions, Shown to Scale</h1>
-    <p>Scroll ➡️ to compare the average person, an American, and the entire United States in 2023.</p>
+    <p>Scroll to compare the average person, an American, and the entire United States in 2023.</p>
     <p>Each pixel = <b>5 tonnes</b> of CO₂ emissions.</p>
+    <br><br><br><br><br><br><br><br>
+    <p>Either use the right arrow key or press shift and scroll wheel down to move right.</p>
   </div>
 
+  <!-- Average Person -->
   <div class="section" id="person">
     <h2>Average Person (5 tonnes)</h2>
-    <div class="pixel" style="width:2px; height:2px;"></div>
+    <div class="pixel" style="width:1px; height:1px;"></div>
   </div>
 
+  <!-- Average American -->
   <div class="section" id="american">
     <h2>Average American (15 tonnes)</h2>
-    <div class="block" style="width:6px; height:6px;"></div>
+    <div class="pixel" style="width:1px; height:1px;"></div>
+    <div class="pixel" style="width:1px; height:1px;"></div>
+    <div class="pixel" style="width:1px; height:1px;"></div>
   </div>
 
+  <!-- Text for usa scrolling -->
+  <div id="scroll-overlay">
+    <div class="scroll-text" id="text-1">The U.S.A. has emitted more CO₂ than any other country in history.</div>
+    <div class="scroll-text" id="text-2">Each pixel you're scrolling over represents 5 tonnes of CO₂.</div>
+    <div class="scroll-text" id="text-3">All together, this is billions of tonnes of emissions by just one country.</div>
+  </div>
+
+  <!-- USA Section -->
   <div class="section" id="usa">
     <h2>United States (2023)</h2>
     <p id="usa-summary">Loading data...</p>
-    <div id="usa-block" class="block"></div>
-  </div>
+    <div id="usa-block" class="block">
+      <div id="nc-block" class="sub-block">
+        <div id="nc-label">NC residents' total CO₂ emissions (162,000,000 tonnes)</div>
+      </div>
+      <div id="shell-block" class="sub-block">
+        <div id="shell-label">Shell's total CO₂ emissions (116,500,000,000 tonnes)</div>
+      </div>
+    </div>
+    <div id="usa-counter">0 tonnes CO₂</div>
+  </div>  
 
+  <!-- Runs the javascript -->
   <script src="https://cdn.jsdelivr.net/npm/d3@7/dist/d3.min.js"></script>
   <script src="script.js"></script>
 </body>
