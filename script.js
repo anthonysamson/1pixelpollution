@@ -29,7 +29,7 @@ async function loadData() {
   // Add shell label to main block
   const shellLabelEl = document.createElement("div");
   shellLabelEl.id = "shell-label";
-  shellLabelEl.textContent = "Shell's total CO₂ emissions (116,500,000,000 tonnes)⁶";
+  shellLabelEl.textContent = "Shell's total CO₂ emissions from 1892-2019 (116,500,000,000 tonnes)⁶";
   shellBlockEl.appendChild(shellLabelEl);
 
   // Math for usa co2
