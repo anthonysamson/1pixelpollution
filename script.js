@@ -1,53 +1,59 @@
 async function loadData() {
-  console.log("Script is running");
   let data;
 
+  // Attempts to fetch USA data
   try {
     data = await d3.csv("./filtered_owid_data.csv", d3.autoType);
     console.log("Loaded CSV rows:", data.length);
   } catch (err) {
     console.warn("Could not load CSV, using fallback data.", err);
-    data = [
+    data = [ // Backup USA data
       { country: "United States", year: 2023, co2: 4911.391, cumulative_co2: 416000 }
     ];
   }
 
-  const usa2023 = data.find(d => d.country === "United States" && +d.year === 2023);
+  // Declaration of a bunch of labels/blocks
+  const usa2023   = data.find(d => d.country === "United States" && +d.year === 2023);
   const summaryEl = document.getElementById("usa-summary");
-  const blockEl = document.getElementById("usa-block");
+  const blockEl   = document.getElementById("usa-block");
   const counterEl = document.getElementById("usa-counter");
   const ncBlockEl = document.getElementById("nc-block");
   const ncLabelEl = document.getElementById("nc-label");
 
-  const shellBlockEl = document.createElement("div");
+  // Add shell block to main block
+  const shellBlockEl = document.createElement("div");  
   shellBlockEl.id = "shell-block";
   shellBlockEl.className = "sub-block";
   blockEl.appendChild(shellBlockEl);
 
+  // Add shell label to main block
   const shellLabelEl = document.createElement("div");
   shellLabelEl.id = "shell-label";
-  shellLabelEl.textContent = "Shell's total CO₂ emissions (116,500,000,000 tonnes)";
+  shellLabelEl.textContent = "Shell's total CO₂ emissions (116,500,000,000 tonnes)⁶";
   shellBlockEl.appendChild(shellLabelEl);
 
+  // Math for usa co2
   const co2_million_tonnes = usa2023.cumulative_co2;
   const co2_tonnes = co2_million_tonnes * 1_000_000;
   const pixels_needed = co2_tonnes / 5;
 
-  summaryEl.textContent = `Since 1800, the U.S. emitted ${co2_million_tonnes.toLocaleString()} million tonnes of CO₂ (~${pixels_needed.toExponential(2)} or ~86,400,000,000 pixels).`;
+  // Summary for usa
+  summaryEl.textContent = `Since 1800, the U.S. emitted ${co2_million_tonnes.toLocaleString()} million tonnes of CO₂ (~${pixels_needed.toExponential(2)} or ~86,400,000,000 pixels)³.`;
 
+  // Display of usa pixels
   const widthVW = Math.log10(pixels_needed) * 1000; // Not fully scaled sadly, but will get the point across
   blockEl.style.width = widthVW + "vw";
   blockEl.style.height = "500px";
   blockEl.style.background = "black";
   blockEl.style.marginTop = "40px";
   blockEl.style.position = "relative";
-
   document.body.style.width = (widthVW + 200) + "vw";
   const usaSection = document.getElementById("usa");
   usaSection.style.width = blockEl.style.width;
 
   const totalCO2 = co2_tonnes;
 
+  // NC block
   const ncTotalCO2_million = 7324.2; // 7,324.2 million tonnes
   const ncTotalCO2 = ncTotalCO2_million * 1_000_000; // convert to tonnes
   const ncWidth = Math.max((ncTotalCO2 / totalCO2) * widthVW, 10);
@@ -77,6 +83,7 @@ async function loadData() {
   shellBlockEl.style.position = "absolute";
   shellBlockEl.style.transition = "opacity 1s ease";
 
+  // Function for the continious count under usa block
   function updateCounter() {
     const scrollX = window.scrollX;
     const viewportCenter = scrollX + window.innerWidth / 2;
@@ -99,10 +106,12 @@ async function loadData() {
         maximumFractionDigits: 0,
       })} tonnes CO₂`;
 
-      const ncVisible = (progress >= 0.38 && progress <= 0.5) ? 1 : 0;
+      // Controls when the nc block is visible
+      const ncVisible = (progress >= 0.25 && progress <= 0.7) ? 1 : 0;
       ncBlockEl.style.opacity = ncVisible;
       ncLabelEl.style.opacity = ncVisible;
 
+      // Controls when the shell block is visible
       const shellVisible = (progress >= 0.4 && progress <= 0.95) ? 1 : 0;
       shellBlockEl.style.opacity = shellVisible;
       shellLabelEl.style.opacity = shellVisible;
@@ -119,6 +128,7 @@ async function loadData() {
   window.addEventListener("scroll", updateCounter);
 }
 
+// All scrolling text is controlled here
 window.addEventListener("scroll", () => {
   const scrollX = window.scrollX;
   const maxScroll = document.body.scrollWidth - window.innerWidth;
@@ -128,7 +138,8 @@ window.addEventListener("scroll", () => {
   const usaTexts = [
     document.getElementById("text-1"),
     document.getElementById("text-2"),
-    document.getElementById("text-3")
+    document.getElementById("text-3"),
+    document.getElementById("text-4")
   ];
   const shellTexts = [
     document.getElementById("shell-text-1"),
@@ -146,28 +157,29 @@ window.addEventListener("scroll", () => {
   [...usaTexts, ...shellTexts, ...finalTexts].forEach(t => (t.style.opacity = 0));
   overlay.style.opacity = 0;
 
-  // --- USA Text Range ---
+  // USA Text Range 
   const usaStart = 0.07;
   const usaEnd = 0.37;
 
-  // --- Shell Text Range ---
-  const shellStart = 0.5;
-  const shellEnd = 0.72;
+  // Shell Text Range 
+  const shellStart = 0.47;
+  const shellEnd = 0.70;
 
-  // --- Final Text Range ---
-  const finalStart = 0.78;
-  const finalEnd = 0.99;
+  // Final Text Range 
+  const finalStart = 0.74;
+  const finalEnd = 0.94;
 
-  // --- USA Fade Logic ---
+  // USA Fade Logic 
   if (progress >= usaStart && progress <= usaEnd) {
     overlay.style.opacity = 1;
     const localProgress = (progress - usaStart) / (usaEnd - usaStart);
-    if (localProgress < 0.33) usaTexts[0].style.opacity = 1;
-    else if (localProgress < 0.66) usaTexts[1].style.opacity = 1;
-    else usaTexts[2].style.opacity = 1;
+    if (localProgress < 0.25) usaTexts[0].style.opacity = 1;
+    else if (localProgress < 0.5) usaTexts[1].style.opacity = 1;
+    else if (localProgress < 0.75) usaTexts[2].style.opacity = 1;
+    else usaTexts[3].style.opacity = 1;
   }
 
-  // --- Shell Fade Logic ---
+  // Shell Fade Logic
   if (progress >= shellStart && progress <= shellEnd) {
     overlay.style.opacity = 1;
     const localProgress = (progress - shellStart) / (shellEnd - shellStart);
@@ -176,7 +188,7 @@ window.addEventListener("scroll", () => {
     else shellTexts[2].style.opacity = 1;
   }
 
-  // --- Final Fade Logic ---
+  // Final Fade Logic
   if (progress >= finalStart && progress <= finalEnd) {
     overlay.style.opacity = 1;
     const localProgress = (progress - finalStart) / (finalEnd - finalStart);
@@ -186,4 +198,6 @@ window.addEventListener("scroll", () => {
     else finalTexts[3].style.opacity = 1;
   }
 });
+
+// Runs everything
 loadData();

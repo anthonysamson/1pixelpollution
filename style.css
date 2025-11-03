@@ -1,4 +1,4 @@
-/* ===== Base Styles ===== */
+/*  Base Styles  */
 body {
   margin: 0;
   background: #ffffff;
@@ -6,11 +6,11 @@ body {
   font-family: system-ui, sans-serif;
   overflow-x: auto;
   overflow-y: hidden;
-  white-space: nowrap; /* keep horizontal scroll */
+  white-space: nowrap; 
   scroll-behavior: smooth;
 }
 
-/* ===== Section Layout ===== */
+/*  Section Layout  */
 .section {
   display: inline-block;
   height: 105vh;
@@ -20,7 +20,7 @@ body {
   text-align: center;
 }
 
-/* ===== USA Section ===== */
+/*  USA Section  */
 #usa {
   width: 200vw;
   text-align: left;
@@ -36,12 +36,12 @@ body {
   position: relative;
 }
 
-/* ===== Headings ===== */
+/*  Headings  */
 h1, h2 {
   margin: 0.5em 0;
 }
 
-/* ===== Pixel and Block ===== */
+/*  Pixel and Block  */
 .pixel, .block {
   background-color: #222;
   border-radius: 0;
@@ -51,10 +51,11 @@ h1, h2 {
 
 .block {
   outline: 1px solid #222;
+  outline: none;
   image-rendering: pixelated;
 }
 
-/* ===== Overlay Text System ===== */
+/*  Overlay Text System  */
 #scroll-overlay {
   position: fixed;
   top: 50%;
@@ -67,7 +68,7 @@ h1, h2 {
   pointer-events: none;
 }
 
-/* ===== Text Styling ===== */
+/*  Text Styling  */
 .scroll-text {
   position: absolute;               
   top: 50%;
@@ -80,10 +81,11 @@ h1, h2 {
   color: white;
   text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.5);
   width: 100%;
-  max-width: 900px;                 
+  max-width: 900px;
+  text-align: center;                 
 }
 
-/* ===== Background for Overlay ===== */
+/*  Background for Overlay  */
 body::before {
   content: "";
   position: fixed;
@@ -93,7 +95,7 @@ body::before {
   z-index: 50;
 }
 
-/* ===== USA Counter ===== */
+/*  USA Counter  */
 #usa-counter {
   position: fixed;
   bottom: 60px;
@@ -112,7 +114,7 @@ body::before {
   transition: opacity 0.8s ease;
 }
 
-/* ===== Sub-block Base Style ===== */
+/*  Sub-block Base Style  */
 .sub-block {
   position: absolute;
   border-radius: 8px;
@@ -126,7 +128,7 @@ body::before {
   text-shadow: 0 0 10px rgba(0,0,0,0.6);
 }
 
-/* ===== North Carolina Block ===== */
+/*  North Carolina Block  */
 #nc-block {
   background: #007BFF;
   height: 60px;       
@@ -134,11 +136,11 @@ body::before {
   transition: none;
 }
 
-/* ===== NC Label ===== */
+/*  NC Label  */
 #nc-label {
   position: absolute;
-  bottom: 101%;          /* slightly above the block */
-  left: 12.5%;
+  bottom: 101%;         
+  left: 9.75%;
   transform: translateX(-50%);
   color: white;
   font-weight: bold;
@@ -150,19 +152,19 @@ body::before {
   pointer-events: none;
 }
 
-/* ===== Shell Block ===== */
+/*  Shell Block  */
 #shell-block {
   background: #ffd600;
   height: 200px;
 }
 
-/* ===== Shell Label ===== */
+/*  Shell Label  */
 #shell-label {
-  position: absolute;  /* relative to Shell block */
-  top: -25px;          /* slightly above the block */
-  left: 0;             /* start at left edge of the block */
-  width: 100%;         /* span full block width */
-  text-align: left;    /* left-align text */
+  position: absolute;  
+  top: -25px;          
+  left: 0;             
+  width: 100%;         
+  text-align: left;    
   white-space: nowrap;
   color: white;
   font-weight: bold;

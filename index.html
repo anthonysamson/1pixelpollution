@@ -24,7 +24,7 @@
 
   <!-- Average Person -->
   <div class="section" id="person">
-    <h2>Average Person's CO₂ emissions (5 tonnes)</h2>
+    <h2>Average Person's CO₂ emissions (5 tonnes)¹</h2>
     <br><br><br><br>
     <div class="pixel" style="width:1px; height:1px;"></div>
     <p>&#8593;</p> <!-- Arrow -->
@@ -32,7 +32,7 @@
 
   <!-- Average American -->
   <div class="section" id="american">
-    <h2>Average American's CO₂ emissions in a year (15 tonnes)</h2>
+    <h2>Average American's CO₂ emissions in a year (15 tonnes)¹</h2>
     <br><br><br><br>
     <div class="pixel" style="width:1px; height:1px;"></div>
     <div class="pixel" style="width:1px; height:1px;"></div>
@@ -49,47 +49,162 @@
 
    <!-- Boone Pop -->
   <div style="text-align: left;" class="section" id="boonePop"> <!-- avg life expectency 20000 * 15 = 300000 --> 
-    <h2>Annual Boone North Carolina's population emissions (300000 tonnes)</h2>
+    <h2>Annual Boone, North Carolina's population emissions (300000 tonnes)</h2>
     <br><br><br><br>
     <div class="pixel" style="width:750px; height:400px;"></div>
   </div>
 
   <!-- Boone Town -->
   <div style="text-align: left;" class="section" id="booneTown"> <!-- people 300000 + town of boones 275770 = 575770 --> 
-    <h2>Annual Town of Boone North Carolina's emissions (575770 tonnes)</h2>
+    <h2>Annual Town of Boone, North Carolina's emissions (575770 tonnes)²</h2>
     <br><br><br><br>
     <div class="pixel" style="width:1440px; height:400px;"></div>
   </div>
 
   <!-- Text for usa scrolling -->
   <div id="scroll-overlay">
-    <div class="scroll-text" id="text-1">The U.S.A. has emitted more CO₂ than any other country in history.</div>
-    <div class="scroll-text" id="text-2">Each pixel you're scrolling over represents 5 tonnes of CO₂.</div>
-    <div class="scroll-text" id="text-3">All together, this is billions of tonnes of emissions by just one country.</div>
-    <div class="scroll-text" id="shell-text-1">Shell is one of the world's largest corporate emitters of CO₂.</div>
+    <div class="scroll-text" id="text-1">Each pixel you're scrolling over represents 5 tonnes of CO₂.</div>
+    <div class="scroll-text" id="text-2">The USA has emitted more CO₂ than any other country in history.⁴</div>
+    <div class="scroll-text" id="text-3">The USA has produced ~24% of all total CO₂ in the atmosphere since 1800.⁴</div>
+    <div class="scroll-text" id="text-4">All together, this is hundreds of billions of tonnes of emissions by just one country.</div>
+    <div class="scroll-text" id="shell-text-1">Shell is one of the world's largest corporate emitters of CO₂.⁷</div>
     <div class="scroll-text" id="shell-text-2">Shells lifetime emissions exceed those of many entire countries combined.</div>
-    <div class="scroll-text" id="shell-text-3">Since its creation Shell has released over 100 billion tonnes of CO₂.</div>
+    <div class="scroll-text" id="shell-text-3">Since its creation Shell has released over 100 billion tonnes of CO₂.⁶</div>
     <div class="scroll-text" id="final-text-1">Despite how bleak this might look, positive changes are taking place.</div>
-    <div class="scroll-text" id="final-text-2">Renewables are forecasted to generate 46% of global electricity by 2030.</div>
-    <div class="scroll-text" id="final-text-3">Wind and solar power capacity globally grew by ~50% in 2023</div>
+    <div class="scroll-text" id="final-text-2">Renewables are forecasted to generate 46% of global electricity by 2030.⁸</div>
+    <div class="scroll-text" id="final-text-3">Wind and solar power capacity globally grew by ~50% in 2023.¹³</div>
     <div class="scroll-text" id="final-text-4">Lets see how renewable energy could impact the USA's CO₂ emissions.</div>
 
   </div>
 
   <!-- USA Section -->
   <div class="section" id="usa">
-    <h2>United States (2023)</h2>
+    <h2>United States (1800-2023)</h2>
     <p id="usa-summary">Loading data...</p>
     <div id="usa-block" class="block">
       <div id="nc-block" class="sub-block">
-        <div id="nc-label">North Carolina's total CO₂ emissions (7,324,200,000 tonnes)</div>
+        <div id="nc-label">North Carolina's total CO₂ emissions (7,324,200,000 tonnes)⁵</div>
       </div>
       <div id="shell-block" class="sub-block">
-        <div id="shell-label">Shell's total CO₂ emissions (116,500,000,000 tonnes)</div>
+        <div id="shell-label">Shell's total CO₂ emissions (116,500,000,000 tonnes)⁶</div>
       </div>
     </div>
     <div id="usa-counter">0 tonnes CO₂</div>
   </div>  
+
+  <div class="section" id="spacing1"></div>
+  <div class="section" id="spacing2"></div>
+  <div class="section" id="spacing3"></div>
+
+  <!-- Hope Section -->
+  <div style="text-align: left;" class="section" id="hope">
+  <h2>Hope for the Future</h2>
+  <p>While global CO₂ emissions are high, renewable energy and personal actions are making a difference.</p>
+
+  <div id="hope-scroll" style="white-space: nowrap; overflow-x: auto; padding: 20px 0;">
+
+    <!-- Renewable Energy Stats (scaled) -->
+    <div class="hope-item" style="display:inline-block; margin-right: 40px;">
+      <span>In 2023, Renewables generated ~33% of global electricity.<br></span>
+      <span>Based on the estimated jump to ~46% in 2030⁸, that means we should see ~13% decrease in non-renewables usage.</span>
+      <br><span>Lets apply this to Boone North Carolina's CO₂ contribution.</span>
+      <!-- 2023 statistics           - 67% nonrenewable + 33% renewable = 100% of energy -->
+      <!-- Predicted 2030 statistics - 54% nonrenewable + 46% renewable = 100% of energy --> 
+      <!-- Town of Boone's CO₂ = 575770 
+           575770 + (575770 * .33) is boones potential CO₂ output without renewables
+           with the additional renewables, the new CO₂ output becomes 
+           (575770 + (575770 * .33)) * 54% = 413518 which is the new nonrenewable energy-->
+      <br><br><br>
+      <div class="pixel" style="width:1440px; height:400px;
+        background: linear-gradient(to right, black 1034px, #120C6E 406px 1446px);">
+      </div> <br><br>
+      <span>The dark blue section represents the amount of CO₂ reduced by the additional usage of renewables.</span>
+    </div>
+
+    <!-- Everyday Actions (scaled) -->
+    <div class="hope-item" style="display:inline-block; margin-right: 40px;">
+      <span>If all 20,000 people in Boone either walked, biked, used public transit, or switched to EVs<br>
+            we could save ~43,680 tonnes of CO₂ per year.⁹</span>
+      <!-- Width scaled to 0.042 t/week × 52 weeks × 20,000 people = ~43,680 t/year → 43,680 / 5 t/pixel ≈ 8736px -->
+      <br><br><br>
+      <div class="pixel" style="width:1034px; height:400px;
+        background: linear-gradient(to right, black 1012px, #5E72EB 22px 1034px);">
+      </div> <br><br>
+      <span>The light blue section represents the amount of CO₂ reduced by better transportation usage.</span>
+    </div>
+
+    <div class="hope-item" style="display:inline-block; margin-right: 40px;">
+      <span>If all 20,000 people in Boone switched to reusable cups and containers we could save ~20,000 tonnes of CO₂ per year.¹⁰</span>
+      <!-- One reusable cup/container can replace ~200 single-use items per year
+           Producing and disposing of single-use cups/containers emits roughly 0.005 t CO₂ per item.
+           200 * .005 tCO₂ = tCO₂, 1 * 20,000 = 20,000 tCO₂ / 5 t/pixel = 4,000 pixels → scale visually smaller -->
+      <br><br><br>
+      <div class="pixel" style="width:1022px; height:400px;
+        background: linear-gradient(to right, black 1002px, #a25eeb 10px 1022px);">
+      </div> <br><br>
+      <span>The light purple section represents the amount of CO₂ reduced by better transportation usage.</span>
+    </div>
+
+
+    <div class="hope-item" style="display:inline-block; margin-right: 40px;">
+      <span>By eating more plant-based meals (3 meat-free days/week), carbon emissions can be reduced even further <br>by around 11,400 tonnes of CO₂ a year.¹¹</span>
+      <!-- If one meat‑free day reduces ~3.6 kg CO₂ (~0.0036 t) and one does that 52 weeks/year = ~0.19 t/year 
+           3 meat-free day/week ~0.57 tCO₂ per person/year → 20,000 people × 0.57 = 11,400 tCO₂/year → 11,400 / 5 ≈ 2,280 -->
+      <br><br><br>
+      <div class="pixel" style="width:1002px; height:400px;
+        background: linear-gradient(to right, black 996px, #FF9190 6px 1002px);">
+      </div> <br><br>
+      <span>The pink section represents the amount of CO₂ reduced by better eating habits.</span>
+    </div>
+
+    <div class="hope-item" style="display:inline-block; margin-right: 40px;">
+      <span>By implementing more recycling and composting we can save an additional ~6,000 tonnes of CO₂ annually.¹²</span>
+      <!-- ~0.3 tCO₂ per person/year × 20,000 people = 6,000 tCO₂/year → 6,000 / 5 ≈ 1,200 pixels -->
+      <br><br><br>
+      <div class="pixel" style="width:996px; height:400px;
+        background: linear-gradient(to right, black 993px, #FDC094 3px 996px);">
+      </div> <br><br>
+      <span>The tan section represents the amount of CO₂ reduced by better recycling and reduction of single-use plastics.¹²</span>
+    </div>
+
+    <div class="hope-item" style="display:inline-block; margin-right: 40px;">
+      <span>Combined CO₂ reductions for Boone from renewables, transportation, reusable cups, plant-based meals, and recycling.<br>
+            All together, this accounts for a 31% total decrease in CO₂ emissions.</span>
+      <br><br><br>
+      <div class="pixel" style="width:1440px; height:400px;
+        background: linear-gradient(to right, 
+          black 0px 993px,         /* Base CO₂ without reductions */
+          #120C6E 993px  1399px,    /* Dark blue: renewables */
+          #5E72EB 1399px 1421px,    /* Light blue: transportation */
+          #a25eeb 1421px 1431px,    /* Light purple: reusable cups */
+          #FF9190 1431px 1437px,    /* Pink: plant-based meals */
+          #FDC094 1437px 1440px     /* Tan: recycling */
+        );">
+      </div>
+      <br><br>
+      <span>Each colored section represents CO₂ reduced by the earlier specified action.</span>
+    </div>
+    </div>
+  </div>
+
+  <!-- Conclusion Section -->
+  <div class="section" id="conclusion" style="text-align:left; padding:40px 20px;">
+    <h1>The Power of Action</h1>
+    <p>From a single person emitting 5 tonnes of CO₂ per year, to major corporations like Shell releasing billions of tonnes, the scale of global emissions can feel overwhelming.</p>
+    <p>However, the example from here in Boone, North Carolina, shows that both renewable energy and everyday actions can make a measurable difference:</p>
+    <ul>
+      <li>Transitioning to renewable electricity in just one town can reduce tens of thousands of tonnes of CO₂ annually.</li>
+      <li>Individual choices such as walking, biking, using public transit, switching to EVs, eating more plant-based meals, <br>using reusable containers, and recycling, collectively reduce thousands of tonnes of CO₂ each year.</li>
+    </ul>
+    <p>These small but consistent actions, multiplied across communities and countries, add up to significant reductions. <br>The visualizations in this site illustrate that every pixel of effort counts.</p>
+    <p>Ultimately, while historical emissions are vast, the future is not fixed. With widespread adoption of renewable energy, sustainable lifestyles, and mindful corporate policies, <br>we have the power to flatten emissions curves and move toward a more sustainable world.</p>
+    <p><b>Every action matters, and together, we can make a visible impact.</b></p>
+    <figure>
+      <img align="left"src="earth.png" alt="Earth¹⁴" style="width: 425px;">
+      <figcaption>¹⁴</figcaption>
+    </figure> 
+    
+  </div>
 
   <!-- Runs the javascript -->
   <script src="https://cdn.jsdelivr.net/npm/d3@7/dist/d3.min.js"></script>
