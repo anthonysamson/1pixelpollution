@@ -29,7 +29,7 @@ async function loadData() {
   // Add shell label to main block
   const shellLabelEl = document.createElement("div");
   shellLabelEl.id = "shell-label";
-  shellLabelEl.textContent = "Shell's total CO₂ emissions from 1892-2019 (116,500,000,000 tonnes)⁶";
+  shellLabelEl.textContent = "Shell's total CO₂ emissions from 1892-2019 (116,500,000,000 tonnes)⁹";
   shellBlockEl.appendChild(shellLabelEl);
 
   // Math for usa co2
@@ -38,7 +38,7 @@ async function loadData() {
   const pixels_needed = co2_tonnes / 5;
 
   // Summary for usa
-  summaryEl.textContent = `Since 1800, the U.S. emitted ${co2_million_tonnes.toLocaleString()} million tonnes of CO₂ (~${pixels_needed.toExponential(2)} or ~86,400,000,000 pixels)³.`;
+  summaryEl.textContent = `Since 1800, the U.S. emitted ${co2_million_tonnes.toLocaleString()} million tonnes of CO₂ (~${pixels_needed.toExponential(2)} or ~86,400,000,000 pixels)⁶.`;
 
   // Display of usa pixels
   const widthVW = Math.log10(pixels_needed) * 1000; // Not fully scaled sadly, but will get the point across
@@ -158,11 +158,11 @@ window.addEventListener("scroll", () => {
   overlay.style.opacity = 0;
 
   // USA Text Range 
-  const usaStart = 0.07;
+  const usaStart = 0.12;
   const usaEnd = 0.37;
 
   // Shell Text Range 
-  const shellStart = 0.47;
+  const shellStart = 0.52;
   const shellEnd = 0.70;
 
   // Final Text Range 
